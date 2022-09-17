@@ -1,26 +1,74 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <ModalView v-if="modal" @close="closeModal" :onerooms="onerooms" :clicked="clicked"/>
+  <div class="menu">
+    <a v-for="menu in menus" :key="menu">{{menu}}</a>
+  </div>
+  <div v-for="(product, i ) in onerooms" :key="i">
+    <img class="room-image" :src="product.image" />
+    <h4 @click="openModal(i)">{{product.title}}</h4>
+    <p>{{product.price}} 원</p>
+    <button @click="onIncrease(i)">허위매물신고</button> <span>신고수: {{product.counter}}</span>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+  import data from './assets/onerooms.js';
+  import ModalView from './components/ModalView.vue';
 export default {
   name: 'App',
+  data(){
+    return{
+      menus: [ 'Home', 'Products', 'About'],
+      modal: false,
+      onerooms: data,
+      clicked: 0
+    }
+  },
   components: {
-    HelloWorld
+    ModalView
+},
+  methods:{
+    onIncrease(i){
+      this.onerooms[i].counter++;
+    },
+    openModal(i){
+      this.modal = true;
+      this.clicked = i;
+      console.log(this.clicked , ' clicked..');
+    },
+    closeModal(){
+      this.modal = false;
+      this.clicked = 0;
+    }
   }
 }
 </script>
 
 <style>
+body{
+  margin: 0;
+  width: 512px;
+}
+
+.menu{
+  background-color: darkslateblue;
+  padding: 15px;
+  border-radius: 6px;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+.menu a{
+  color: white;
+  font-size: 1.5em;
+  padding: 10px;
+}
+.room-image{
+  width: 100%;
+  margin-top: 40px;
 }
 </style>
