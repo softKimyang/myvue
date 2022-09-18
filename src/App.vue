@@ -2,6 +2,7 @@
   <div class="menu">
     <router-link to="/">Home</router-link>
     <router-link to="/onerooms">Onerooms</router-link>
+    <router-link to="/vuexTest">Vuex Test</router-link>
     <router-link to="/about">About</router-link>
     <!-- <router-link to="/notFound">NotFound</router-link> -->
   </div>
@@ -13,7 +14,6 @@ export default {
   name: 'App',
   data(){
     return{
-     menus: ['Home', 'Products', 'About'],
     }
   },
   components: {
