@@ -1,6 +1,6 @@
 import { createRouter,  createWebHistory } from 'vue-router'
 import Home from '../pages/Home.vue'
-import Board from '../pages/board/Board.vue'
+import BoardList from '../pages/board/BoardList.vue'
 import Onerooms from '../pages/Onerooms.vue'
 import VuexTest from '../pages/VuexTest.vue'
 import Login from '../pages/Login'
@@ -20,8 +20,8 @@ const routes = [
         component: Onerooms
     },
     {
-        path: '/board',
-        component: Board
+        path: '/board/list',
+        component: BoardList
     },
     {
         path: '/vuexTest',
