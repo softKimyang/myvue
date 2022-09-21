@@ -70,8 +70,6 @@ export default{
                 let end_page = this.page.end_page;
                 for( let i = start_page; i <= end_page; i ++) pageNumber.push(i);
                 return pageNumber;
-
-        
             }
         }
     },
@@ -80,26 +78,22 @@ export default{
     },
     methods: {
         fnGetList(){
-            this.list = [
-                {
-                    "idx": 1,
-                    "title": "제목1",
-                    "author": "작성자1",
-                    "create_at": "작성일시1"
-                },
-                {
-                    "idx": 2,
-                    "title": "제목1",
-                    "author": "작성자1",
-                    "create_at": "작성일시1"
-                },
-                {
-                    "idx": 3,
-                    "title": "제목1",
-                    "author": "작성자1",
-                    "create_at": "작성일시1"
-                },
-            ]
+            this.requestBody = {
+                keyword: this.keyword,
+                page: this.page,
+                size: this.size
+            }
+
+            this.$axios.get(this.$serverUrl + "/board/list", {
+                params: this.requestBody,
+                headers: {}
+            }).then((res) => {
+                this.list = res.data 
+            }).catch((err) => {
+                if(err.message.indexOf('Network Error') > -1){
+                    alert('네트워크가 원활하지 않습니다. \n 잠시 후 다시 시도해 주세요.');
+                }
+            })
         }
     },
 }
