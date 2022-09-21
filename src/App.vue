@@ -1,15 +1,10 @@
 <template>
-  <div class="menu">
-    <router-link to="/">Home</router-link>
-    <router-link to="/onerooms">Onerooms</router-link>
-    <router-link to="/vuexTest">Vuex Test</router-link>
-    <router-link to="/about">About</router-link>
-    <!-- <router-link to="/notFound">NotFound</router-link> -->
-  </div>
+  <Header />
   <router-view />
 </template>
 
 <script>
+  import Header from './pages/Header.vue'
 export default {
   name: 'App',
   data(){
@@ -17,6 +12,7 @@ export default {
     }
   },
   components: {
+    Header
 },
   methods:{
   }
@@ -26,7 +22,7 @@ export default {
 <style>
   body{
     margin: 0;
-    width: 512px;
+    width: 600px;
   }
   
   .menu{
