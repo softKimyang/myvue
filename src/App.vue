@@ -1,10 +1,12 @@
 <template>
   <Header />
   <router-view />
+  <Footer />
 </template>
 
 <script>
-  import Header from './pages/Header.vue'
+  import Header from './components/Header.vue'
+  import Footer from './components/Footer.vue'
 export default {
   name: 'App',
   data(){
@@ -12,7 +14,8 @@ export default {
     }
   },
   components: {
-    Header
+    Header,
+    Footer
 },
   methods:{
   }
@@ -43,4 +46,7 @@ export default {
     font-size: 1.5em;
     padding: 10px;
   }
+  #nav a.router-link-exact-active {
+  color: #42b983;
+}
 </style>
