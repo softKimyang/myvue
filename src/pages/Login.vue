@@ -18,7 +18,6 @@
     </div>
 </template>
 <script>
-    import { mapActions, mapGetters } from 'vuex';
 export default {
     data(){
         return{
@@ -27,7 +26,6 @@ export default {
         }
     },
     methods: {
-        ...mapActions(['login']),
 
         async fnLogin(){
             if(this.user_id === ''){
@@ -38,23 +36,13 @@ export default {
                 alert('비밀번호를 입력하세요')
                 return
             }
+           alert(this.user_id + '님 안녕하세요' )
 
-            try {
-                let loginResult = await this.login({user_id: this.user_id, user_pw: this.user_passwd})
-                if(loginResult) alert(this.user_id + '님 안녕하세요' )
-            } catch (err) {
-                if( err.message.indexOf('Network Error') > -1){
-                    alert('서버에 접속할 수 없습니다. 상태를 확인해 주세요.')
-                }else{
-                    alert('로그인 정보를 확인 할 수 없습니다.')
-                }
-            }
+           
         }
     },
     computed:{
-        ...mapGetters({
-            errorState: 'getErrorState'
-        })
+       
 
     }
 }
