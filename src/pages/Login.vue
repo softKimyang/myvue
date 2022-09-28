@@ -41,7 +41,7 @@ export default {
 
             try {
                 let loginResult = await this.login({user_id: this.user_id, user_pw: this.user_passwd})
-                if(loginResult) alert('로그인 결과: ' + loginResult)
+                if(loginResult) alert(this.user_id + '님 안녕하세요' )
             } catch (err) {
                 if( err.message.indexOf('Network Error') > -1){
                     alert('서버에 접속할 수 없습니다. 상태를 확인해 주세요.')
